@@ -1,69 +1,212 @@
 <!DOCTYPE html>
-<html> 
+<html>
 
-<head>    
-    <!-- The head tag links to resources our page needs and defines information about it. Tags in the <head> aren't displayed on the page. -->
+<head>
+    <link rel="stylesheet" type="text/css" href="index.css"> <!-- External stylesheet link -->
+    <title>Rhea's Project</title> <!-- The title displayed in the browser tab, not on the page itself -->
 
-    <!-- This is a link to a stylesheet which contains rules about how each element on the page should be defined-->
-    <!-- Try swapping example1.css to another, and take a look at example1.css to see if you understand it-->
-    <link rel="stylesheet" type="text/css" href="index.css">
-    <title> Rhea's Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
-
-    <!-- This is a link to the vega-lite which we're using to make graphs -->
+    <!-- Link to the Vega-Lite library for making graphs -->
     <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 
     <style>
-        #chartGrid {
-            display: flex;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fab5ae;
         }
-        
+
+        .container {
+            width: 100%;
+            max-width: 1200px; /* Set a maximum width for the container */
+            margin: 0 auto; /* Center the container horizontally */
+            padding-top: 20px;
+            text-align: center; /* Center align content inside container */
+        }
+
+        h1, h2 {
+            color: #2e3d49;
+            margin-bottom: 10px;
+            text-align: center; /* Ensure headings are centered */
+        }
+
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            color: #555;
+            text-align: center; /* Center align paragraphs */
+        }
+
+        .lead {
+            font-size: 1.3em;
+            color: #333;
+            text-align: center; /* Center align lead paragraph */
+        }
+
+        /* Center-align the Aim section */
+        .aims-text {
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px; /* Optional: limit width for better readability */
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 100%; /* Ensure section fits the width properly */
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        figure {
+            margin: 0;
+            padding: 20px;
+            background-color: #eeeeee;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden; /* Prevent overflow */
+        }
+
+        /* Flexbox container for the charts */
+        .chart-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center the items inside the flexbox */
+            gap: 20px;
+            width: 100%; /* Allow the container to take full width */
+        }
+
+        .chart-container figure {
+            flex: 1 1 100%; /* Allow figures to take up as much space as needed, and wrap naturally */
+            max-width: 100%; /* Ensure figures do not overflow */
+            box-sizing: border-box;
+        }
+
+        .first-chart {
+            flex: 1 1 100%; /* First chart takes up full width */
+        }
+
+        .notes {
+            margin-top: 40px;
+            font-style: italic;
+            color: #555;
+            text-align: center; /* Center align the notes section */
+        }
+
+        /* Media queries for smaller screens */
+        @media screen and (max-width: 768px) {
+            .chart-container figure {
+                flex: 1 1 100%; /* Full width for smaller screens */
+            }
+        }
     </style>
 </head>
-<body> 
+
+<body>
     <div class="container">
-    <h1 class="big" style="margin-bottom: 0px;">
-       
-        Understanding the Rise of Population in India
-    </h1>
-    <p class="lead pt-2 py-vh-2">This is my final project for PP434: Automated Data Visualization for
-        Public Policy.
+        <!-- Centered Title and Lead Section -->
+        <h1>Understanding the Rise of Population in India</h1>
+        <p class="lead">This is my final project for PP434: Automated Data Visualization for Public Policy.</p>
+
+        <!-- Center-aligned Aims Section -->
         <section>
-            <h2> Chart 1: World Population</h2>
+            <div class="aims-text">
+                <p>Aim: The aim of this project is to explore the factors driving global population growth and its impact on socioeconomic systems. It will analyze key determinants such as birth rates, healthcare, migration, and policies that influence population dynamics. The project also aims to assess the effects of rising populations on resources like food, water, housing, and energy, as well as pressures on healthcare, education, and employment.</p>
+            </div>
+        </section>
+
+        <!-- Chart container for the first chart (World Population) -->
+        <section class="first-chart">
+            <h2>Visualization 1: World Population</h2>
+            <p>A map showing the Population Figures around the World.</p>
+            <figure id="Location1"></figure>
+            <script>
+                let figure_1_spec = "Project_1.json";
+                vegaEmbed('#Location1', figure_1_spec);
+            </script>
+        </section>
+
+        <!-- Flexbox container for subsequent charts -->
+        <div class="chart-container">
+            <!-- Chart 2: India's Population Growth -->
             <section>
-                XYZ
-                <figure id= "Location1"></figure> 
-            </section>
+                <h2>Visualization 2: India's Population Growth</h2>
+                <p>An Area Chart showing India's Population Growth over the years.</p>
+                <figure id="Location2"></figure>
                 <script>
-                    let figure_1_spec = "Project_1.json"
-                    vegaEmbed('#Location1', figure_1_spec)
+                    let figure_2_spec = "Project_2.json";
+                    vegaEmbed('#Location2', figure_2_spec);
                 </script>
-                <section>
-                    <h2> Chart 2: India's Population Growth</h2>
-                    <section>
-                        XYZ
-                        <figure id= "Location2"></figure> 
-                    </section>
-                        <script>
-                            let figure_2_spec = "Project_2.json"
-                            vegaEmbed('#Location2', figure_2_spec)
-                        </script>
-                        <h2> Chart 3: India's GDP Growth</h2>
-                        <section>
-                            XYZ
-                            <figure id= "Location3"></figure> 
-                        </section>
-                            <script>
-                                let figure_3_spec = "Project_3.json"
-                                vegaEmbed('#Location3', figure_3_spec)
-                            </script>
-                
+            </section>
 
+            <!-- Chart 3: India's Demographics -->
+            <section>
+                <h2>Visualization 3: India's Demographics</h2>
+                <p>A Line Chart showing the Median Age, Life Expectancy at Birth, and Fertility Rate in India over the years.</p>
+                <figure id="Location3"></figure>
+                <script>
+                    let figure_3_spec = "Project_3.json";
+                    vegaEmbed('#Location3', figure_3_spec);
+                </script>
+            </section>
+        </div>
 
+        <div class="chart-container">
+            <!-- Chart 4: India's Health Care -->
+            <section>
+                <h2>Visualization 4: India's Health Care</h2>
+                <p>An Interactive Histogram Chart showing India's Healthcare System, focusing on healthcare spending as a percentage of GDP, Hospital beds per 100k Population, and Infant Mortality Rates over the years.</p>
+                <figure id="Location4"></figure>
+                <script>
+                    let figure_4_spec = "Project_4.json";
+                    vegaEmbed('#Location4', figure_4_spec);
+                </script>
+            </section>
 
+            <!-- Chart 5: India's Migration Patterns -->
+            <section>
+                <h2>Visualization 5: India's Migration Patterns</h2>
+                <p>A Bubble Plot showing India's Migration Patterns focusing on three indicators of Migration over the years.</p>
+                <figure id="Location5"></figure>
+                <script>
+                    let figure_5_spec = "Project_5.json";
+                    vegaEmbed('#Location5', figure_5_spec);
+                </script>
+            </section>
+        </div>
 
+        <div class="chart-container">
+            <!-- Chart 6: Effect of Rising Population in India -->
+            <section>
+                <h2>Visualization 6: Effect of Rising Population in India</h2>
+                <p>XYZ</p>
+                <figure id="Location6"></figure>
+                <script>
+                    let figure_6_spec = "Project_6.json";
+                    vegaEmbed('#Location6', figure_6_spec);
+                </script>
+            </section>
+        </div>
 
+        <!-- Notes Section -->
+        <div class="notes">
+            <h2>Notes:</h2>
+            <ul>
+                <li>Data and Accessing it</li>
+                <li>Challenges with Data</li>
+                <li>Conclusions and Policy Recommendations</li>
+            </ul>
+        </div>
+    </div>
+</body>
 
-
-    </body>
+</html>

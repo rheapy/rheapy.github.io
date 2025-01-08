@@ -1,45 +1,56 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  
-    "data": {
-      "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/Population%20(number)%2C%20All%20ages.csv",
-      "format": {
-        "type": "csv"
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/Population%20(number)%2C%20All%20ages.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+
+  "title": {
+    "text": "India's Population Growth (2000-2023)",
+    "subtitle": "Source: World Bank",
+    "subtitleFontStyle": "italic",
+    "subtitleFontSize": 10,
+    "anchor": "start",
+    "color": "black"
+  },
+
+  "width": 500,
+  "height": 300,
+
+  "mark": {
+    "type": "area",
+    "color": "seagreen",
+    "opacity": 0.5
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "temporal",
+      "title": "Year"
+    },
+    "y": {
+      "field": "India, Total",
+      "type": "quantitative",
+      "title": "Population",
+      "scale": {
+        "domain": [1000000, 1600000000]
       }
     },
-  
-    "title": {
-      "text": "India's Population Growth (2000-2023)",
-      "subtitle": "Source: World Bank",
-      "subtitleFontStyle": "italic",
-      "subtitleFontSize": 10,
-      "anchor": "start",
-      "color": "black"
-    },
-  
-    "width": 400,
-    "height": 300,
-  
-    "mark": {
-      "type": "area",
-      "color": "seagreen",
-      "opacity": 0.5
-    },
-  
-    "encoding": {
-      "x": {
+    "tooltip": [
+      {
         "field": "Year",
         "type": "temporal",
         "title": "Year"
       },
-      "y": {
+      {
         "field": "India, Total",
         "type": "quantitative",
-        "title": "Population",
-        "scale": {
-          "domain": [1000000, 1600000000]
-        }
+        "title": "Population"
       }
-    }
+    ]
   }
-  
+}

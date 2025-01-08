@@ -1,0 +1,82 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": {
+        "values": [
+          {"Year": 2024, "Metric": "Infant Mortality Rate", "Value": 25.799},
+          {"Year": 2024, "Metric": "HealthCare Spending", "Value": 2.10},
+          {"Year": 2024, "Metric": "Hospital Beds", "Value": 0.79},
+          {"Year": 2023, "Metric": "Infant Mortality Rate", "Value": 26.619},
+          {"Year": 2023, "Metric": "HealthCare Spending", "Value": 2.20},
+          {"Year": 2023, "Metric": "Hospital Beds", "Value": 0.54},
+          {"Year": 2022, "Metric": "Infant Mortality Rate", "Value": 27.695},
+          {"Year": 2022, "Metric": "HealthCare Spending", "Value": 1.60},
+          {"Year": 2022, "Metric": "Hospital Beds", "Value": 0.53},
+          {"Year": 2021, "Metric": "Infant Mortality Rate", "Value": 28.771},
+          {"Year": 2021, "Metric": "HealthCare Spending", "Value": 3.28},
+          {"Year": 2021, "Metric": "Hospital Beds", "Value": 0.60},
+          {"Year": 2020, "Metric": "Infant Mortality Rate", "Value": 29.848},
+          {"Year": 2020, "Metric": "HealthCare Spending", "Value": 3.34},
+          {"Year": 2020, "Metric": "Hospital Beds", "Value": 0.50}
+        ]
+      },
+      "params": [
+        {
+          "name": "Year_selection",
+          "value": 2024,
+          "bind": {
+            "input": "range",
+            "min": 2020,
+            "max": 2024,
+            "step": 1,
+            "name": "Select Year: "
+          }
+        }
+      ],
+      "transform": [
+        {"filter": "datum.Year == Year_selection"}
+      ],
+      "width": 500,
+      "height": 300,
+      "title": {
+        "text": "Healthcare Metrics in India",
+        "subtitle": "Use slider to change year",
+        "subtitleFontStyle": "italic"
+      },
+      "mark": "bar",
+      "encoding": {
+        "x": {
+          "field": "Metric",
+          "type": "nominal",
+          "title": null,
+          "axis": {
+            "labelAngle": -45,
+            "labelLimit": 200
+          }
+        },
+        "y": {
+          "field": "Value",
+          "type": "quantitative",
+          "axis": {
+            "title": "Value",
+            "grid": true
+          }
+        },
+        "color": {
+          "field": "Metric",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Infant Mortality Rate", "HealthCare Spending", "Hospital Beds"],
+            "range": ["#e41a1c", "#377eb8", "#4daf4a"]
+          },
+          "legend": {
+            "orient": "bottom",
+            "title": null
+          }
+        },
+        "tooltip": [
+          {"field": "Metric", "type": "nominal"},
+          {"field": "Value", "type": "quantitative", "format": ".2f"},
+          {"field": "Year", "type": "quantitative"}
+        ]
+      }
+    }

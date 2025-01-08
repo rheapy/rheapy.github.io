@@ -1,47 +1,40 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "description": "Bubble chart using a different dataset (CO2 Emissions, Income, and Population).",
-    "width": 600,
-    "height": 400,
     "data": {
-      "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/cars.json",
-      "format": {"type": "json"}
+      "values": [
+        {"year": 2015, "usd_inr": 63.7},
+        {"year": 2016, "usd_inr": 66.5},
+        {"year": 2017, "usd_inr": 64.5},
+        {"year": 2018, "usd_inr": 68.0},
+        {"year": 2019, "usd_inr": 70.0},
+        {"year": 2020, "usd_inr": 74.5},
+        {"year": 2021, "usd_inr": 74.0},
+        {"year": 2022, "usd_inr": 79.0},
+        {"year": 2023, "usd_inr": 80.5},
+        {"year": 2024, "usd_inr": 83.0}
+      ]
     },
-    "transform": [
-      {
-        "aggregate": [
-          {"op": "mean", "field": "Miles_per_Gallon", "as": "avg_MPG"},
-          {"op": "sum", "field": "Weight_in_lbs", "as": "total_Weight"}
-        ],
-        "groupby": ["Origin"]
-      }
-    ],
-    "mark": {
-      "type": "circle",
-      "tooltip": true
-    },
+    "mark": "area",
     "encoding": {
       "x": {
-        "field": "avg_MPG",
-        "type": "quantitative",
-        "axis": {"title": "Average MPG"}
+        "field": "year",
+        "type": "ordinal",
+        "axis": {"title": "Year"}
       },
       "y": {
-        "field": "total_Weight",
+        "field": "usd_inr",
         "type": "quantitative",
-        "axis": {"title": "Total Weight"}
-      },
-      "size": {
-        "field": "total_Weight",
-        "type": "quantitative",
-        "scale": {"range": [0, 2000]},
-        "legend": {"title": "Weight"}
+        "axis": {"title": "USD to INR Exchange Rate"}
       },
       "color": {
-        "field": "Origin",
-        "type": "nominal",
-        "legend": {"title": "Region"}
-      }
-    }
+        "value": "skyblue"
+      },
+      "tooltip": [
+        {"field": "year", "type": "ordinal", "title": "Year"},
+        {"field": "usd_inr", "type": "quantitative", "title": "USD to INR"}
+      ]
+    },
+    "title": "USD to INR Exchange Rate (2015-2024)",
+    "width": 600,
+    "height": 400
   }
   

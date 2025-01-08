@@ -1,0 +1,42 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "url": "rhttps://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/rice_price.csv",
+      "format": {"type": "csv"}
+    },
+    "transform": [
+      {
+        "calculate": "monthFormat(datum.date2, '%m/%d/%Y', '%B')",
+        "as": "month"
+      }
+    ],
+    "mark": "circle",
+    "encoding": {
+      "x": {
+        "field": "month",
+        "type": "ordinal",
+        "sort": [
+          "January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ],
+        "title": "Month",
+        "axis": {
+          "labelAngle": -45
+        }
+      },
+      "y": {
+        "aggregate": "mean",
+        "field": "price",
+        "type": "quantitative",
+        "title": "Average Price"
+      },
+      "tooltip": [
+        {"field": "month", "type": "ordinal", "title": "Month"},
+        {"field": "price", "aggregate": "mean", "type": "quantitative", "title": "Average Price"}
+      ]
+    },
+    "title": "Rice Prices Aggregated by Month",
+    "width": 800,
+    "height": 400
+  }
+  

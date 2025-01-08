@@ -1,73 +1,224 @@
-{
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": {
-      "text": "India's Population vs GDP Growth (2000-2023)",
-      "subtitle": "Bubble size represents the total population",
-      "subtitleFontStyle": "italic",
-      "subtitleFontSize": 12,
-      "anchor": "start",
-      "color": "black"
-    },
-    "width": 600,
-    "height": 400,
-    "data": {
-      "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/main/India_GDPop.csv",
-      "format": {
-        "type": "csv"
-      }
-    },
-    "params": [
-      {
-        "name": "selected_year",
-        "value": 2023,
-        "bind": {
-          "input": "range",
-          "min": 2000,
-          "max": 2023,
-          "step": 1,
-          "name": "Select Year: "
+ {
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "data": {
+        "values": [
+          {"Year": "1955", "var": "Fertility Rate", "val": 5.9},
+          {"Year": "1960", "var": "Fertility Rate", "val": 5.9},
+          {"Year": "1965", "var": "Fertility Rate", "val": 5.9},
+          {"Year": "1970", "var": "Fertility Rate", "val": 5.6},
+          {"Year": "1975", "var": "Fertility Rate", "val": 5.2},
+          {"Year": "1980", "var": "Fertility Rate", "val": 4.8},
+          {"Year": "1985", "var": "Fertility Rate", "val": 4.4},
+          {"Year": "1990", "var": "Fertility Rate", "val": 4.0},
+          {"Year": "1995", "var": "Fertility Rate", "val": 3.7},
+          {"Year": "2000", "var": "Fertility Rate", "val": 3.4},
+          {"Year": "2005", "var": "Fertility Rate", "val": 3.0},
+          {"Year": "2010", "var": "Fertility Rate", "val": 2.6},
+          {"Year": "2020", "var": "Fertility Rate", "val": 2.3},
+          {"Year": "2024", "var": "Fertility Rate", "val": 2.0},
+          {"Year": "1955", "var": "Life Expectancy at Birth", "val": 43.7},
+          {"Year": "1960", "var": "Life Expectancy at Birth", "val": 45.6},
+          {"Year": "1965", "var": "Life Expectancy at Birth", "val": 45.6},
+          {"Year": "1970", "var": "Life Expectancy at Birth", "val": 48.7},
+          {"Year": "1975", "var": "Life Expectancy at Birth", "val": 50.8},
+          {"Year": "1980", "var": "Life Expectancy at Birth", "val": 53.6},
+          {"Year": "1985", "var": "Life Expectancy at Birth", "val": 56.3},
+          {"Year": "1990", "var": "Life Expectancy at Birth", "val": 58.6},
+          {"Year": "1995", "var": "Life Expectancy at Birth", "val": 60.6},
+          {"Year": "2000", "var": "Life Expectancy at Birth", "val": 62.7},
+          {"Year": "2005", "var": "Life Expectancy at Birth", "val": 64.9},
+          {"Year": "2010", "var": "Life Expectancy at Birth", "val": 67.2},
+          {"Year": "2020", "var": "Life Expectancy at Birth", "val": 69.3},
+          {"Year": "2024", "var": "Life Expectancy at Birth", "val": 70.2},
+          {"Year": "1955", "var": "Median Age", "val": 19.7},
+          {"Year": "1960", "var": "Median Age", "val": 18.5},
+          {"Year": "1965", "var": "Median Age", "val": 18.1},
+          {"Year": "1970", "var": "Median Age", "val": 18.1},
+          {"Year": "1975", "var": "Median Age", "val": 18.4},
+          {"Year": "1980", "var": "Median Age", "val": 18.9},
+          {"Year": "1985", "var": "Median Age", "val": 19.3},
+          {"Year": "1990", "var": "Median Age", "val": 19.7},
+          {"Year": "1995", "var": "Median Age", "val": 20.3},
+          {"Year": "2000", "var": "Median Age", "val": 21.2},
+          {"Year": "2005", "var": "Median Age", "val": 22.2},
+          {"Year": "2010", "var": "Median Age", "val": 23.6},
+          {"Year": "2020", "var": "Median Age", "val": 27.0},
+          {"Year": "2024", "var": "Median Age", "val": 28.4}
+        ]
+      },
+      "config": {
+        "view": {
+          "stroke": "transparent"
         }
-      }
-    ],
-    "transform": [
-      {
-        "filter": "datum.Year <= selected_year"
-      }
-    ],
-    "mark": {
-      "type": "circle",
-      "opacity": 0.7,
-      "tooltip": true
-    },
-    "encoding": {
-      "x": {
-        "field": "India_Total",
-        "type": "quantitative",
-        "title": "Population (India)",
-        "scale": {"domain": [1000000000, 1500000000]}
       },
-      "y": {
-        "field": "India_GDP",
-        "type": "quantitative",
-        "title": "GDP Growth Rate (%)"
+      "title": {
+        "text": "India's Demographics 1955-2024",
+        "subtitle": ["Source: UN"],
+        "subtitleFontStyle": "italic",
+        "subtitleFontSize": 11,
+        "fontSize": 16,
+        "anchor": "start",
+        "zindex": 0
       },
-      "size": {
-        "field": "India_Total",
-        "type": "quantitative",
-        "title": "Population Size",
-        "scale": {"range": [10, 1000]}
-      },
-      "color": {
-        "field": "Year",
-        "type": "ordinal",
-        "title": "Year",
-        "scale": {"scheme": "viridis"}
-      },
-      "tooltip": [
-        {"field": "Year", "type": "ordinal", "title": "Year"},
-        {"field": "India_Total", "type": "quantitative", "title": "Population"},
-        {"field": "India_GDP", "type": "quantitative", "title": "GDP Growth (%)"}
+      "width": 500,
+      "height": 300,
+      "layer": [
+        {
+          "encoding": {
+            "x": {
+              "field": "Year",
+              "type": "temporal",
+              "axis": {
+                "title": null,
+                "labelPadding": 5,
+                "labelFontSize": 11,
+                "ticks": false,
+                "grid": false
+              }
+            },
+            "y": {
+              "field": "val",
+              "type": "quantitative",
+              "axis": {
+                "title": null,
+                "labelPadding": 5,
+                "labelFontSize": 11,
+                "ticks": false,
+                "gridOpacity": 0.6
+              }
+            },
+            "color": {
+              "field": "var",
+              "type": "nominal",
+              "legend": null,
+              "scale": {
+                "domain": [
+                  "Median Age",
+                  "Life Expectancy at Birth",
+                  "Fertility Rate"
+                ],
+                "range": ["rgb(128,0,0)", "rgb(0,0,128)", "rgb(0,128,0)"]
+              }
+            }
+          },
+          "transform": [
+            {
+              "filter": {"param": "View"}
+            }
+          ],
+          "layer": [
+            {
+              "mark": "line"
+            },
+            {
+              "params": [
+                {
+                  "name": "label",
+                  "select": {
+                    "type": "point",
+                    "encodings": ["x"],
+                    "nearest": true,
+                    "on": "mouseover"
+                  }
+                },
+                {
+                  "name": "View",
+                  "select": {
+                    "type": "point",
+                    "fields": ["var"]
+                  },
+                  "bind": {
+                    "input": "select",
+                    "options": [
+                      "Median Age",
+                      "Life Expectancy at Birth",
+                      "Fertility Rate"
+                    ],
+                    "name": "Measure"
+                  },
+                  "value": "Life Expectancy at Birth"
+                }
+              ],
+              "mark": "point",
+              "encoding": {
+                "opacity": {
+                  "condition": {
+                    "param": "label",
+                    "empty": false,
+                    "value": 1
+                  },
+                  "value": 0
+                }
+              }
+            }
+          ]
+        },
+        {
+          "transform": [
+            {
+              "filter": {"param": "label", "empty": false}
+            },
+            {
+              "filter": {"param": "View"}
+            }
+          ],
+          "layer": [
+            {
+              "mark": {
+                "type": "rule",
+                "color": "gray"
+              },
+              "encoding": {
+                "x": {
+                  "type": "temporal",
+                  "field": "Year",
+                  "aggregate": "min"
+                }
+              }
+            },
+            {
+              "encoding": {
+                "text": {
+                  "type": "quantitative",
+                  "field": "val"
+                },
+                "x": {
+                  "type": "temporal",
+                  "field": "Year"
+                },
+                "y": {
+                  "type": "quantitative",
+                  "field": "val"
+                }
+              },
+              "layer": [
+                {
+                  "mark": {
+                    "type": "text",
+                    "stroke": "white",
+                    "strokeWidth": 2,
+                    "align": "left",
+                    "dx": 5,
+                    "dy": -5
+                  }
+                },
+                {
+                  "mark": {
+                    "type": "text",
+                    "align": "left",
+                    "dx": 5,
+                    "dy": -5
+                  },
+                  "encoding": {
+                    "color": {
+                      "type": "nominal",
+                      "field": "var"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
       ]
     }
-  }
-  

@@ -1,0 +1,43 @@
+{
+    "data": {
+      "values": [
+        {"year": 2018, "population": 1350, "food": 2.5, "water": 3.2, "housing": 4.1, "energy": 6.5, "healthcare": 5.2, "education": 6.0, "employment": 7.1},
+        {"year": 2019, "population": 1360, "food": 2.7, "water": 3.4, "housing": 4.3, "energy": 6.8, "healthcare": 5.5, "education": 6.2, "employment": 7.3},
+        {"year": 2020, "population": 1370, "food": 2.9, "water": 3.6, "housing": 4.5, "energy": 7.1, "healthcare": 5.7, "education": 6.4, "employment": 7.5},
+        {"year": 2021, "population": 1380, "food": 3.1, "water": 3.8, "housing": 4.7, "energy": 7.4, "healthcare": 6.0, "education": 6.6, "employment": 7.7},
+        {"year": 2022, "population": 1390, "food": 3.3, "water": 4.0, "housing": 4.9, "energy": 7.7, "healthcare": 6.2, "education": 6.8, "employment": 7.9},
+        {"year": 2023, "population": 1400, "food": 3.5, "water": 4.2, "housing": 5.1, "energy": 8.0, "healthcare": 6.5, "education": 7.0, "employment": 8.1},
+        {"year": 2024, "population": 1410, "food": 3.7, "water": 4.4, "housing": 5.3, "energy": 8.3, "healthcare": 6.7, "education": 7.2, "employment": 8.3}
+      ]
+    },
+    "mark": "point",
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "temporal",
+        "title": "Year"
+      },
+      "y": {
+        "field": "value",
+        "type": "quantitative",
+        "title": "Resource/Indicator Value"
+      },
+      "color": {
+        "field": "variable",
+        "type": "nominal",
+        "title": "Resource/Indicator"
+      },
+      "tooltip": [
+        {"field": "year", "title": "Year"},
+        {"field": "value", "title": "Value"},
+        {"field": "variable", "title": "Resource/Indicator"}
+      ]
+    },
+    "transform": [
+      {
+        "fold": ["food", "water", "housing", "energy", "healthcare", "education", "employment"],
+        "as": ["variable", "value"]
+      }
+    ]
+  }
+  

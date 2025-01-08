@@ -1,0 +1,43 @@
+{
+  "data": {
+    "values": [
+      {"rainfall": 1200, "crop_yield": 3.5},
+      {"rainfall": 1500, "crop_yield": 4.0},
+      {"rainfall": 800, "crop_yield": 2.5},
+      {"rainfall": 1000, "crop_yield": 3.0},
+      {"rainfall": 2000, "crop_yield": 5.2},
+      {"rainfall": 900, "crop_yield": 2.8},
+      {"rainfall": 1700, "crop_yield": 4.5},
+      {"rainfall": 1100, "crop_yield": 3.3},
+      {"rainfall": 1300, "crop_yield": 3.9},
+      {"rainfall": 1600, "crop_yield": 4.8}
+    ]
+  },
+  "mark": {
+    "type": "circle",
+    "color": "green",
+    "filled": true
+  },
+  "encoding": {
+    "x": {
+      "field": "rainfall",
+      "type": "quantitative",
+      "title": "Annual Rainfall (mm)"
+    },
+    "y": {
+      "field": "crop_yield",
+      "type": "quantitative",
+      "title": "Crop Yield (tonnes per hectare)"
+    },
+    "size": {
+      "value": 200
+    },
+    "tooltip": [
+      {"field": "rainfall", "type": "quantitative", "title": "Rainfall (mm)"},
+      {"field": "crop_yield", "type": "quantitative", "title": "Crop Yield (tonnes/ha)"}
+    ]
+  },
+  "title": "Rainfall vs. Crop Yield in India",
+  "width": 600,
+  "height": 400
+}

@@ -1,0 +1,140 @@
+{
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 500,
+      "height": 400,
+      "padding": { "left": 50, "right": 150, "top": 30, "bottom": 50 },
+      "title": {
+        "text": "India Migration Patterns",
+        "anchor": "start",
+        "offset": 10
+      },
+      "data": {
+        "values": [
+          {"year": 2018, "category": "Emigration", "value": 2300000, "percentChange": 2.1},
+          {"year": 2018, "category": "Immigration", "value": 1600000, "percentChange": 1.5},
+          {"year": 2018, "category": "Interstate Migration", "value": 8500000, "percentChange": 2.8},
+          
+          {"year": 2019, "category": "Emigration", "value": 2400000, "percentChange": 2.3},
+          {"year": 2019, "category": "Immigration", "value": 1700000, "percentChange": 1.7},
+          {"year": 2019, "category": "Interstate Migration", "value": 8800000, "percentChange": 3.0},
+          
+          {"year": 2020, "category": "Emigration", "value": 2500000, "percentChange": 2.5},
+          {"year": 2020, "category": "Immigration", "value": 1800000, "percentChange": 1.8},
+          {"year": 2020, "category": "Interstate Migration", "value": 9000000, "percentChange": 3.2},
+          
+          {"year": 2021, "category": "Emigration", "value": 2700000, "percentChange": 3.1},
+          {"year": 2021, "category": "Immigration", "value": 1900000, "percentChange": 2.2},
+          {"year": 2021, "category": "Interstate Migration", "value": 9500000, "percentChange": 3.8},
+          
+          {"year": 2022, "category": "Emigration", "value": 2900000, "percentChange": 2.8},
+          {"year": 2022, "category": "Immigration", "value": 2000000, "percentChange": 2.0},
+          {"year": 2022, "category": "Interstate Migration", "value": 10000000, "percentChange": 3.5},
+          
+          {"year": 2023, "category": "Emigration", "value": 3100000, "percentChange": 2.9},
+          {"year": 2023, "category": "Immigration", "value": 2200000, "percentChange": 2.3},
+          {"year": 2023, "category": "Interstate Migration", "value": 10500000, "percentChange": 3.6},
+          
+          {"year": 2024, "category": "Emigration", "value": 3300000, "percentChange": 3.0},
+          {"year": 2024, "category": "Immigration", "value": 2400000, "percentChange": 2.4},
+          {"year": 2024, "category": "Interstate Migration", "value": 11000000, "percentChange": 3.7}
+        ]
+      },
+      "params": [{
+        "name": "year_select",
+        "value": 2018,
+        "bind": {
+          "input": "range",
+          "min": 2018,
+          "max": 2024,
+          "step": 1,
+          "name": "Select Year: "
+        }
+      }],
+      "transform": [
+        {"filter": "datum.year == year_select"}
+      ],
+      "layer": [
+        {
+          "mark": {
+            "type": "circle",
+            "opacity": 0.8,
+            "stroke": "white",
+            "strokeWidth": 1
+          },
+          "encoding": {
+            "x": {
+              "field": "category",
+              "type": "nominal",
+              "title": "Migration Type",
+              "axis": {
+                "labelAngle": 0,
+                "labelAlign": "center",
+                "labelOffset": 10,
+                "titlePadding": 20
+              }
+            },
+            "y": {
+              "field": "percentChange",
+              "type": "quantitative",
+              "title": "Year-over-Year Change (%)",
+              "scale": {
+                "domain": [0, 4],
+                "nice": true
+              },
+              "axis": {
+                "grid": true,
+                "tickCount": 8
+              }
+            },
+            "size": {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Number of Migrants",
+              "scale": {
+                "type": "sqrt",
+                "domain": [0, 11000000],
+                "range": [200, 4000]
+              },
+              "legend": {
+                "orient": "right",
+                "offset": 10,
+                "symbolStrokeColor": "#4A4A4A",
+                "symbolStrokeWidth": 1,
+                "tickCount": 5,
+                "format": "~s",
+                "values": [0, 2000000, 4000000, 6000000, 8000000, 10000000]
+              }
+            },
+            "color": {
+              "field": "category",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Emigration", "Immigration", "Interstate Migration"],
+                "range": ["#4299E1", "#48BB78", "#9F7AEA"]
+              },
+              "legend": null
+            },
+            "tooltip": [
+              {"field": "category", "type": "nominal", "title": "Type"},
+              {"field": "value", "type": "quantitative", "title": "Number of Migrants", "format": ",.0f"},
+              {"field": "percentChange", "type": "quantitative", "title": "YoY Change", "format": ".1f"},
+              {"field": "year", "type": "quantitative", "title": "Year"}
+            ]
+          }
+        }
+      ],
+      "config": {
+        "view": {
+          "stroke": null
+        },
+        "axis": {
+          "labelFontSize": 12,
+          "titleFontSize": 13,
+          "titlePadding": 10
+        },
+        "legend": {
+          "labelFontSize": 12,
+          "titleFontSize": 13
+        }
+      }
+    }
