@@ -188,23 +188,50 @@
             <!-- Chart 6: Effect of Rising Population in India -->
             <section>
                 <h2>Visualization 6: Effect of Rising Population in India</h2>
-                <p>XYZ</p>
+                <p></p>
                 <figure id="Location6"></figure>
                 <script>
                     let figure_6_spec = "Project_6.json";
                     vegaEmbed('#Location6', figure_6_spec);
                 </script>
+                <p>The line of best fit (shown as a gray diagonal line) in this visualization serves as a critical reference point for understanding the overall relationship between population growth and resource/service demands in India. From 2010 to 2025, it shows a positive linear correlation, starting at approximately index value 100 and rising steadily to about 145.
+                    What's particularly interesting is how the individual metrics deviate from this average trend line:
+                    
+                   <p> Above the trend line:<br>
+                
+                    Healthcare shows the most dramatic deviation, rising far above the line of best fit, indicating demands growing much faster than the average relationship with population
+                    Energy consumption also consistently plots above the line, suggesting above-average growth relative to population increase
+                </br></p>
+                    
+                <p> Near the trend line:<br>
+                    
+                    
+                    Food demand, water usage, and housing demand cluster closer to the line of best fit, suggesting their growth is more directly proportional to population growth
+                </br></p>
+                    
+                <p> Below the trend line:<br>
+                    
+                    
+                    Education and employment generally fall below the line, particularly in later years, indicating their growth is not keeping pace with what the average population-demand relationship would predict<br>
+                </br>
+                    The slope of the line of best fit shows that for every million increase in population, there's roughly a 0.35-point increase in the index value across all metrics on average. However, the significant deviations from this line highlight the uneven development and varying pressures across different sectors as India's population grows.</p></br>
             </section>
         </div>
 
         <!-- Notes Section -->
         <div class="notes">
-            <h2>Notes:</h2>
-            <ul>
-                <li>Data and Accessing it</li>
-                <li>Challenges with Data</li>
-                <li>Conclusions and Policy Recommendations</li>
-            </ul>
+            <ul><h2>Notes</h2></ul>
+
+                <h3>Data and Accessing it</h3>
+                <p>For this project, I relied on publicly available datasets that provide valuable insights into population trends, demographics, healthcare, and migration patterns. The primary source of data was global and country-specific datasets from organizations like the World Bank, United Nations Population Division, and National Statistical Offices.
+                    In order to automate the visualization and data analysis process, I used Vega-Lite and cleaned the data manually through the help of excel sheets and Python scripts. </p>
+                <h4>Challenges with Data</h4>
+                <p>One of the main challenges I faced with this project was the limited data available on India, I had to use multiple different websites to find different datasets and at times most of them had missing values.
+                    I had to pull data from different government websites which involved a lot of manual data cleaning and extrapolation. A lot of information on government websites were outdated or unavailable for free use. </p>
+                   <h4>Conclusions and Policy Recommendations </h4>
+                   <p>I believe there is high scope for this project to be scaled for future policy purposes. It is important for policy-makers to ask - Is growing population necessarily a bad thing? and rather they should focus on
+                    questions such as - How can we improve our infrastructure to keep up with the growing population? Overall, I believe that it is crucial to understand the factors behind India's Population Growth because it may not necessarily be as negative 
+                as we perceieve it. Furthermore, it is imperical to note that depsite these factors India stands to be the largest Democracy in the world! </p>
         </div>
     </div>
 </body>
