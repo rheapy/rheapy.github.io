@@ -1,39 +1,355 @@
 <!DOCTYPE html>
+<html lang="en">
 
-<html> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Rhea Soni's Portfolio</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
-<head>    
-    <link rel="stylesheet" type="text/css" href="css/mystyle_beige.css">
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fab5ae;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-    <title>Rhea's Portfolio</title> <!-- The title displayed in the browser tab, not on the page itself -->
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #333;
+        }
 
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .nav-buttons {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .nav-buttons a {
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 15px;
+            background-color: #002348;
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .nav-buttons a:hover {
+            background-color: #0056b3;
+        }
+
+        .landing-page {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fab5ae;
+            color: white;
+            border-radius: 8px;
+        }
+
+        .landing-page h2 {
+            font-size: 36px;
+        }
+
+        .landing-page p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .about-me {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .about-me h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .about-me p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .about-me a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(600px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .chart-container {
+            background-color: #fafafa;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chart-container h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #007bff;
+        }
+
+        .chart-container p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        figure {
+            margin: 0;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #fff;
+            overflow: hidden;
+        }
+
+        figure img {
+            max-width: 100%;
+            border-radius: 8px;
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+        }
+
+        footer a {
+            color: #007bff;
+        }
+    </style>
 </head>
 
-<body> 
-    <!-- The body tag contains the elements that visitors to our page will see. -->
-    <p style="margin-top: 0px; color: darkblue">
-        <!-- we're setting the margin to 0px so the header and author name are close together -->
-        <a class="button" href="https://www.linkedin.com/in/rhea-soni-4a072b146/">LinkedIn</a>
-        <a class="button" href="https://github.com/rheapy">GitHub</a>
-        <a class="button" href="Rhea_Portfolio_Final.html">Portfolio</a>
-        <a class="button" href="Rhea_Project.html">Final Project</a>
-    </p>
+<body>
 
-    <h1 class="big" style="margin-bottom: 0px;"> 
-        Rhea Soni
-    </h1>
+    <!-- Landing Page -->
+    <div class="container landing-page">
+        <h1>Welcome to Rhea Soni's Portfolio</h1>
+        <p>Explore my work and get to know me better. Learn about my projects and skills in data visualization, coding challenges and much more.</p>
+        <div class="nav-buttons">
+            <a href="#about-me">About Me</a>
+            <a href="Rhea_Project.html" target="_blank">Project</a>
+            <a href="#charts">Portfolio</a>
+        </div>
+    </div>
 
-    <p>
-        Hello! I am a MPA Data Science for Public Policy student at the London School of Economics (LSE).
-    </p>
-    
-    <p>
-        Here you can find some of the work I have done in the past few weeks for my PP434 Automated Data Visualisation Course. More to come soon!
-    </p>
+    <!-- About Me Section -->
+    <div id="about-me" class="about-me container">
+        <h2>About Me</h2>
+        <p>Hi! I’m Rhea Soni, a passionate data scientist and coding enthusiast. I specialize in data visualization and interactive web applications. My journey in coding started with an interest in understanding how data can shape our world. Since then, I've worked on several projects that allow me to explore diverse aspects of data science.</p>
+        <p>I’m always keen to learn new technologies and tools and my aim is to create visualizations that tell compelling stories using data.</p>
+        <p>Feel free to check out my <a href="https://www.linkedin.com/in/rhea-soni-4a072b146/">LinkedIn</a> and <a href="https://github.com/rheapy">GitHub</a> profiles.</p>
+    </div>
+
+    <!-- Charts Section -->
+    <div id="charts" class="container">
+        <h3>Course Portfolio - Ten Coding Challenges</h3>
+        <div class="charts-grid">
+            <!-- Coding Challenge 1: Hosting -->
+            <div class="chart-container">
+                <h2>Coding Challenge 1: Hosting. Display charts in your own site</h2>
+                <h4>GDP and Life Expectancy</h4>
+                <p>This is my first chart, an interactive scatter plot showing the relationship between GDP per capita and Life Expectancy in years.</p>
+                <figure id="Location1"></figure>
+                <script>
+                    let figure_1_spec = "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/2/s2_chart2.json";
+                    vegaEmbed('#Location1', figure_1_spec);
+                </script>
+
+                <h4>Real GDP Per Capita over the years</h4>
+                <p>This is my second chart, a line chart showing the Real GDP Per Capita of 6 countries over 30 years.</p>
+                <figure id="Location2"></figure>
+                <script>
+                    let figure_2_spec = "wk1_chart2.json";
+                    vegaEmbed('#Location2', figure_2_spec);
+                </script>
+            </div>
+
+            <!-- Coding Challenge 2: Building -->
+            <div class="chart-container">
+                <h2>Coding Challenge 2: Building. Create your own visualisations.</h2>
+                <p>Here are two graphs created using https://www.economicsobservatory.com/create</p>
+                <figure id="Location3"></figure>
+                <script>
+                    let figure_3_spec = "wk3_chart3.json";
+                    vegaEmbed('#Location3', figure_3_spec);
+                </script>
+
+                <figure id="Location4"></figure>
+                <script>
+                    let figure_4_spec = "wk3_chart4.json";
+                    vegaEmbed('#Location4', figure_4_spec);
+                </script>
+            </div>
+
+            <!-- Coding Challenge 3: Debating -->
+            <div class="chart-container">
+                <h2>Coding Challenge 3: Debating. Use a visualisation in economic/policy commentary</h2>
+                <p><strong>Chosen Topic:</strong> “Under-performing: How can we boost Britain’s low productivity?"</p>
+                <h5>UK productivity has been sluggish since the 2007-09 financial crisis. Our expert panel debates the causes of the UK’s productivity stagnation and consider potential policy solutions</h5>
+                <figure id="Location5"></figure>
+                <script>
+                    let figure_5_spec = "wk3_chart5.json";
+                    vegaEmbed('#Location5', figure_5_spec);
+                </script>
+
+                <figure id="Location6"></figure>
+                <script>
+                    let figure_6_spec = "wk3_chart6.json";
+                    vegaEmbed('#Location6', figure_6_spec);
+                </script>
+                <p>Both visualisations prove that the UK's productivity has been stagnant post-2009, especially in comparison to other similar economies. This suggests the urgency for targeted policies to stimulate innovation and economic output.</p>
+            </div>
+
+            <!-- Coding Challenge 4: Replication -->
+            <div class="chart-container">
+                <h2>Coding Challenge 4: Replication. Re-create, then improve, someone else’s chart.</h2>
+                <p>Find a chart that a journalist, think tank, television channel or company has used. Your challenge is to replicate it, and then improve on it.</p>
+                <h1>Caffeine Ratings by DAVIDsTEA</h1>
+                <p>Below is the original chart:</p>
+                <img src="badchart.png" alt="Caffeine Ratings" style="width:100%; max-width:400px;">
+                <figure id="Location7"></figure>
+                <script>
+                    let figure_7_spec = "wk4_chart7.json";
+                    vegaEmbed('#Location7', figure_7_spec);
+                </script>
+
+                <figure id="Location8"></figure>
+                <script>
+                    let figure_8_spec = "wk4_chart8.json";
+                    vegaEmbed('#Location8', figure_8_spec);
+                </script>
+                <p>I have changed the axis and turned the chart into a bar chart for better readability. Also improved the numerical range of the 'y' axis.</p>
+            </div>
+
+            <!-- Coding Challenge 5: Scraper -->
+            <div class="chart-container">
+                <h2>Coding Challenge 5: Scraper. Implement a data scraper of your own</h2>
+                <p>The website Wikipedia was scraped. Collab notebook <a href="https://colab.research.google.com/drive/166R6VpwtogQZjB3KSAD4Rn9SL8pWdUjY?usp=sharing">here</a>.</p>
+                <img src="download (2).png" alt="Rapes per 100k Population" style="width:100%; max-width:2000px;">
+                <p>I chose Wikipedia because it aggregates globally recognized data, often from reputable sources, making it a convenient starting point for accessible, comparative statistics. Additionally, I am very interested in gender studies and related data, hence I scraped the "reported" crime statistics for Rape per 100k Population in 10 Countries.</p>
+            </div>
+
+            <!-- Coding Challenge 6: Loops -->
+            <div class="chart-container">
+                <h2>Coding Challenge 6: Loops. Build a dashboard</h2>
+                <p>Use the ONS API to batch download nine different series. Save these to your GitHub account, and use these to supply the data to nine charts on a theme or themes of your choice. Collab notebook <a href="https://colab.research.google.com/drive/1BPSr2t8jw_MrFrii9oWvJddGko0AP-8e?usp=sharing">here</a></p>
+                <figure id="Location10"></figure>
+                <script>
+                    let figure_10_spec = "wk5_chart10.json";
+                    vegaEmbed('#Location10', figure_10_spec);
+                </script>
+
+            <!-- Coding Challenge 7: Maps -->
+            <div class="chart-container">
+                <h2>Coding Challenge 7: Maps. Base maps and choropleths</h2>
+                <p>Produce two maps and embed them in your portfolio page. Both should be of the same country, region, area, city</p>
+                <section>
+                    Map 1: A base map of India and its states
+                    <figure id="Location11"></figure>
+                    <script>
+                        let figure_11_spec = "india_basemap.json";
+                        vegaEmbed('#Location11', figure_11_spec);
+                    </script>
+                </section>
+
+                <section>
+                    Map 2: A choropleth map of India
+                    <figure id="Location12"></figure>
+                    <script>
+                        let figure_12_spec = "india_popmap.json";
+                        vegaEmbed('#Location12', figure_12_spec);
+                    </script>
+                </section>
+
+                <p>The Choropleth map of India shows the population figures per state, and the states are shaded from least populated to most populated. As shown, Uttar Pradesh has the highest population in India.</p>
+            </div>
+
+            <!-- Coding Challenge 8: Big Data -->
+            <div class="chart-container">
+                <h2>Coding Challenge 8: Big Data. Extracting a story from millions of prices</h2>
+                <p> I used the Long Run Prices Database (LRPD) to extract the prices of Spaghetti and Rice. I downloaded the datasets and ran them through Stata and filtered and cleaned the variables to produce both datasets which show price over a time period for both the items </p>
+                <p>Spaghetti Prices in the UK</p>
+                <figure id="Location13"></figure>
+                <section>
+                    Rice Prices in the UK
+                    <figure id="Location18"></figure>
+                </section>
+                <script>
+                    let figure_13_spec = "wk8_chart11.json";
+                    vegaEmbed('#Location13', figure_13_spec);
+                    let figure_18_spec = "wk8_chart14.json";
+                    vegaEmbed('#Location18', figure_18_spec);
+                </script>
+            </div>
+
+            <!-- Coding Challenge 9: Analytics Charts -->
+            <div class="chart-container">
+                <h2>Coding Challenge 9: Analytics Charts</h2>
+                <p>Produce two charts that use advanced analytics</p>
+                <p>Both charts are sourced from data in the IMF and World Bank Portal</p>
+                <figure id="Location14"></figure>
+                <figure id="Location15"></figure>
+                <script>
+                    let figure_14_spec = "wk9_chart13.json";
+                    vegaEmbed('#Location14', figure_14_spec);
+                    let figure_15_spec = "wk9_chart12.json";
+                    vegaEmbed('#Location15', figure_15_spec);
+                </script>
+            </div>
+
+            <!-- Coding Challenge 10: Interactive Visualisations -->
+            <div class="chart-container">
+                <h2>Coding Challenge 10: Interactive Visualisations</h2>
+                <p>Produce two visualizations that have interactive elements</p>
+                <p>Both of these charts are part of my final project!</p>
+                <figure id="Location16"></figure>
+                <figure id="Location17"></figure>
+                <script>
+                    let figure_16_spec = "Project_3.json";
+                    vegaEmbed('#Location16', figure_16_spec);
+                    let figure_17_spec = "Project_5.json";
+                    vegaEmbed('#Location17', figure_17_spec);
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Created by Rhea Soni | <a href="https://github.com/rheapy">GitHub</a> | <a href="https://www.linkedin.com/in/rhea-soni-4a072b146/">LinkedIn</a></p>
+    </footer>
 </body>
-    
+
 </html>
-
-
-
-
