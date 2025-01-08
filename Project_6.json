@@ -1,43 +1,96 @@
 {
-    "data": {
-      "values": [
-        {"year": 2018, "population": 1350, "food": 2.5, "water": 3.2, "housing": 4.1, "energy": 6.5, "healthcare": 5.2, "education": 6.0, "employment": 7.1},
-        {"year": 2019, "population": 1360, "food": 2.7, "water": 3.4, "housing": 4.3, "energy": 6.8, "healthcare": 5.5, "education": 6.2, "employment": 7.3},
-        {"year": 2020, "population": 1370, "food": 2.9, "water": 3.6, "housing": 4.5, "energy": 7.1, "healthcare": 5.7, "education": 6.4, "employment": 7.5},
-        {"year": 2021, "population": 1380, "food": 3.1, "water": 3.8, "housing": 4.7, "energy": 7.4, "healthcare": 6.0, "education": 6.6, "employment": 7.7},
-        {"year": 2022, "population": 1390, "food": 3.3, "water": 4.0, "housing": 4.9, "energy": 7.7, "healthcare": 6.2, "education": 6.8, "employment": 7.9},
-        {"year": 2023, "population": 1400, "food": 3.5, "water": 4.2, "housing": 5.1, "energy": 8.0, "healthcare": 6.5, "education": 7.0, "employment": 8.1},
-        {"year": 2024, "population": 1410, "food": 3.7, "water": 4.4, "housing": 5.3, "energy": 8.3, "healthcare": 6.7, "education": 7.2, "employment": 8.3}
-      ]
-    },
-    "mark": "point",
-    "encoding": {
-      "x": {
-        "field": "year",
-        "type": "temporal",
-        "title": "Year"
+      "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+      "width": 500,
+      "height": 400,
+      "data": {
+        "values": [
+          {"population": 1186, "year": 2010, "metric": "Food Demand", "value": 100, "category": "Resources"},
+          {"population": 1231, "year": 2015, "metric": "Food Demand", "value": 108, "category": "Resources"},
+          {"population": 1273, "year": 2020, "metric": "Food Demand", "value": 122, "category": "Resources"},
+          {"population": 1312, "year": 2025, "metric": "Food Demand", "value": 135, "category": "Resources"},
+          
+          {"population": 1186, "year": 2010, "metric": "Water Usage", "value": 100, "category": "Resources"},
+          {"population": 1231, "year": 2015, "metric": "Water Usage", "value": 109, "category": "Resources"},
+          {"population": 1273, "year": 2020, "metric": "Water Usage", "value": 117, "category": "Resources"},
+          {"population": 1312, "year": 2025, "metric": "Water Usage", "value": 129, "category": "Resources"},
+          
+          {"population": 1186, "year": 2010, "metric": "Housing Demand", "value": 100, "category": "Resources"},
+          {"population": 1231, "year": 2015, "metric": "Housing Demand", "value": 109, "category": "Resources"},
+          {"population": 1273, "year": 2020, "metric": "Housing Demand", "value": 120, "category": "Resources"},
+          {"population": 1312, "year": 2025, "metric": "Housing Demand", "value": 133, "category": "Resources"},
+          
+          {"population": 1186, "year": 2010, "metric": "Energy Consumption", "value": 100, "category": "Resources"},
+          {"population": 1231, "year": 2015, "metric": "Energy Consumption", "value": 124, "category": "Resources"},
+          {"population": 1273, "year": 2020, "metric": "Energy Consumption", "value": 147, "category": "Resources"},
+          {"population": 1312, "year": 2025, "metric": "Energy Consumption", "value": 176, "category": "Resources"},
+          
+          {"population": 1186, "year": 2010, "metric": "Healthcare", "value": 100, "category": "Services"},
+          {"population": 1231, "year": 2015, "metric": "Healthcare", "value": 129, "category": "Services"},
+          {"population": 1273, "year": 2020, "metric": "Healthcare", "value": 162, "category": "Services"},
+          {"population": 1312, "year": 2025, "metric": "Healthcare", "value": 200, "category": "Services"},
+          
+          {"population": 1186, "year": 2010, "metric": "Education", "value": 100, "category": "Services"},
+          {"population": 1231, "year": 2015, "metric": "Education", "value": 108, "category": "Services"},
+          {"population": 1273, "year": 2020, "metric": "Education", "value": 116, "category": "Services"},
+          {"population": 1312, "year": 2025, "metric": "Education", "value": 126, "category": "Services"},
+          
+          {"population": 1186, "year": 2010, "metric": "Employment", "value": 100, "category": "Services"},
+          {"population": 1231, "year": 2015, "metric": "Employment", "value": 105, "category": "Services"},
+          {"population": 1273, "year": 2020, "metric": "Employment", "value": 112, "category": "Services"},
+          {"population": 1312, "year": 2025, "metric": "Employment", "value": 120, "category": "Services"}
+        ]
       },
-      "y": {
-        "field": "value",
-        "type": "quantitative",
-        "title": "Resource/Indicator Value"
+      "layer": [
+        {
+          "mark": {"type": "point", "size": 100},
+          "encoding": {
+            "x": {
+              "field": "population",
+              "type": "quantitative",
+              "title": "Population (Millions)",
+              "scale": {"zero": false}
+            },
+            "y": {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Index Value (2010 = 100)"
+            },
+            "color": {
+              "field": "metric",
+              "type": "nominal",
+              "scale": {
+                "domain": ["Food Demand", "Water Usage", "Housing Demand", "Energy Consumption", "Healthcare", "Education", "Employment"],
+                "range": ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#e377c2"]
+              }
+            },
+            "tooltip": [
+              {"field": "year", "type": "quantitative", "title": "Year"},
+              {"field": "population", "type": "quantitative", "title": "Population (M)"},
+              {"field": "metric", "type": "nominal", "title": "Metric"},
+              {"field": "value", "type": "quantitative", "title": "Index Value"}
+            ]
+          }
+        },
+        {
+          "mark": {"type": "line", "color": "gray", "opacity": 0.5},
+          "transform": [{"regression": "value", "on": "population"}],
+          "encoding": {
+            "x": {"field": "population", "type": "quantitative"},
+            "y": {"field": "value", "type": "quantitative"}
+          }
+        }
+      ],
+      "config": {
+        "axis": {"grid": true},
+        "legend": {
+          "orient": "right",
+          "title": null
+        }
       },
-      "color": {
-        "field": "variable",
-        "type": "nominal",
-        "title": "Resource/Indicator"
-      },
-      "tooltip": [
-        {"field": "year", "title": "Year"},
-        {"field": "value", "title": "Value"},
-        {"field": "variable", "title": "Resource/Indicator"}
-      ]
-    },
-    "transform": [
-      {
-        "fold": ["food", "water", "housing", "energy", "healthcare", "education", "employment"],
-        "as": ["variable", "value"]
+      "title": {
+        "text": "Resource & Service Demands vs Population in India",
+        "subtitle": "Indexed Growth (2010 = 100) with Population Trend Line",
+        "fontSize": 16,
+        "anchor": "middle"
       }
-    ]
-  }
-  
+    }
