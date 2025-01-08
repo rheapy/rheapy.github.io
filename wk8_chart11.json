@@ -1,0 +1,50 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Monthly Median Olive Oil Price Over Time",
+    "title": {
+      "text": "Monthly Median Olive Oil Price in the UK Over Time",
+      "fontSize": 12,
+      "anchor": "start"
+    },
+    "width": 400,
+    "height": 200,
+    "data": {
+      "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/spaghetti_price2.csv"
+    },
+    "mark": {
+      "type": "line",
+      "interpolate": "linear",
+      "tooltip": true,
+      "color": "#06c277"
+    },
+    "encoding": {
+      "x": {
+        "field": "date2",
+        "type": "temporal",
+        "title": null,
+        "axis": {"labelAngle": 45, "format": "%Y-%m"}
+      },
+      "y": {
+        "field": "price",
+        "type": "quantitative",
+        "title": "Median Price (£)",
+        "axis": {"format": ".2f"}
+      },
+      "tooltip": [
+        {
+          "field": "date2",
+          "type": "temporal",
+          "title": "Month-Year",
+          "format": "%m-%Y"
+        },
+        {
+          "field": "price",
+          "type": "quantitative",
+          "title": "Price (£)",
+          "format": ".2f"
+        }
+      ]
+    },
+    "config": {"axis": {"grid": true}, "view": {"stroke": "transparent"}}
+  }
+  

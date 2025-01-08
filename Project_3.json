@@ -1,0 +1,73 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "India's Population vs GDP Growth (2000-2023)",
+      "subtitle": "Bubble size represents the total population",
+      "subtitleFontStyle": "italic",
+      "subtitleFontSize": 12,
+      "anchor": "start",
+      "color": "black"
+    },
+    "width": 600,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/main/India_GDPop.csv",
+      "format": {
+        "type": "csv"
+      }
+    },
+    "params": [
+      {
+        "name": "selected_year",
+        "value": 2023,
+        "bind": {
+          "input": "range",
+          "min": 2000,
+          "max": 2023,
+          "step": 1,
+          "name": "Select Year: "
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.Year <= selected_year"
+      }
+    ],
+    "mark": {
+      "type": "circle",
+      "opacity": 0.7,
+      "tooltip": true
+    },
+    "encoding": {
+      "x": {
+        "field": "India_Total",
+        "type": "quantitative",
+        "title": "Population (India)",
+        "scale": {"domain": [1000000000, 1500000000]}
+      },
+      "y": {
+        "field": "India_GDP",
+        "type": "quantitative",
+        "title": "GDP Growth Rate (%)"
+      },
+      "size": {
+        "field": "India_Total",
+        "type": "quantitative",
+        "title": "Population Size",
+        "scale": {"range": [10, 1000]}
+      },
+      "color": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year",
+        "scale": {"scheme": "viridis"}
+      },
+      "tooltip": [
+        {"field": "Year", "type": "ordinal", "title": "Year"},
+        {"field": "India_Total", "type": "quantitative", "title": "Population"},
+        {"field": "India_GDP", "type": "quantitative", "title": "GDP Growth (%)"}
+      ]
+    }
+  }
+  

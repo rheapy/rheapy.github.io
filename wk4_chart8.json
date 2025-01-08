@@ -1,0 +1,67 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Caffeine Ratings",
+      "fontSize": 20,
+      "anchor": "start",
+      "color": "#333333"
+    },
+    "background": "#d8f1f9",
+    "height": 400,
+    "width": 600,
+    "data": {
+      "values": [
+        {"beverage": "White Tea", "caffeine": 60, "color": "#d0f0c0"},
+        {"beverage": "Green Tea", "caffeine": 60, "color": "#b2e881"},
+        {"beverage": "Matcha", "caffeine": 40, "color": "#8bc34a"},
+        {"beverage": "Oolong Tea", "caffeine": 60, "color": "#4da6ff"},
+        {"beverage": "Black Tea", "caffeine": 100, "color": "#234f9b"},
+        {"beverage": "Pu'erh Tea", "caffeine": 60, "color": "#792b58"},
+        {"beverage": "Mate", "caffeine": 20, "color": "#e41a5b"},
+        {"beverage": "Rooibos", "caffeine": 1, "color": "#ffa500"},
+        {"beverage": "Herbal Tea", "caffeine": 1, "color": "#ffeb3b"},
+        {"beverage": "Coffee", "caffeine": 140, "color": "#6f4e37"}
+      ]
+    },
+    "mark": {
+      "type": "bar",
+      "tooltip": true,
+      "cornerRadiusEnd": 4
+    },
+    "encoding": {
+      "y": {
+        "field": "beverage",
+        "type": "nominal",
+        "axis": {
+          "title": "Beverages",
+          "labelFontSize": 14,
+          "labelColor": "#333333"
+        },
+        "sort": [
+          "White Tea",
+          "Green Tea",
+          "Matcha",
+          "Oolong Tea",
+          "Black Tea",
+          "Pu'erh Tea",
+          "Mate",
+          "Rooibos",
+          "Herbal Tea",
+          "Coffee"
+        ]
+      },
+      "x": {
+        "field": "caffeine",
+        "type": "quantitative",
+        "axis": {
+          "title": "Caffeine (mg)",
+          "labelFontSize": 12,
+          "labelColor": "#333333",
+          "grid": true
+        },
+        "scale": {"domain": [0, 150]}
+      },
+      "color": {"field": "color", "type": "nominal", "scale": null}
+    }
+  }
+  

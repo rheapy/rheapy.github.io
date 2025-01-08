@@ -1,0 +1,74 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": {
+      "text": "Caffeine Ratings",
+      "subtitle": "On a scale of 1 to Energizer Bunny",
+      "fontSize": 20,
+      "subtitleFontSize": 14,
+      "anchor": "start",
+      "color": "#003366"
+    },
+    "background": "#cce9fa",
+    "height": 350,
+    "width": 500,
+    "data": {
+      "values": [
+        {"beverage": "White tea", "caffeine": 60, "color": "#d0f0d9"},
+        {"beverage": "Green tea", "caffeine": 60, "color": "#b2e881"},
+        {"beverage": "Matcha", "caffeine": 40, "color": "#8bc34a"},
+        {"beverage": "Oolong tea", "caffeine": 60, "color": "#4da6ff"},
+        {"beverage": "Black tea", "caffeine": 100, "color": "#234f9b"},
+        {"beverage": "Pu'erh tea", "caffeine": 60, "color": "#792b58"},
+        {"beverage": "Maté", "caffeine": 20, "color": "#e41a5b"},
+        {"beverage": "Rooibos", "caffeine": 1, "color": "#ffa500"},
+        {"beverage": "Herbal tea", "caffeine": 1, "color": "#ffeb3b"},
+        {"beverage": "Coffee", "caffeine": 140, "color": "#6f4e37"}
+      ]
+    },
+    "mark": "bar",
+    "encoding": {
+      "y": {
+        "field": "beverage",
+        "type": "nominal",
+        "axis": {
+          "title": null,
+          "labels": true,
+          "labelFontSize": 14,
+          "labelColor": "#003366"
+        },
+        "sort": [
+          "White tea",
+          "Green tea",
+          "Matcha",
+          "Oolong tea",
+          "Black tea",
+          "Pu'erh tea",
+          "Maté",
+          "Rooibos",
+          "Herbal tea",
+          "Coffee"
+        ]
+      },
+      "x": {
+        "field": "caffeine",
+        "type": "quantitative",
+        "axis": {
+          "title": null,
+          "values": [0, 1, 19, 20, 39, 40, 60, 100, 140],
+          "labels": true,
+          "labelExpr": "datum.value + ' mg'",
+          "labelFontSize": 12,
+          "labelColor": "#003366",
+          "grid": false,
+          "ticks": true
+        },
+        "scale": {"domain": [0, 140]}
+      },
+      "color": {
+        "field": "color",
+        "type": "nominal",
+        "scale": null
+      }
+    }
+  }
+  

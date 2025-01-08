@@ -1,0 +1,60 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 700,
+    "height": 400,
+    "title": {
+      "text": "World Population Map",
+      "subtitle": "Source: World Bank (2023)",
+      "fontSize": 14,
+      "subtitleFontSize": 10,
+      "subtitleFontWeight": "lighter",
+      "anchor": "middle",
+      "subtitleFontStyle": "italic"
+    },
+    "data": {
+      "name": "world",
+      "url": "https://raw.githubusercontent.com/EconomicsObservatory/courses/main/datasets/advanced/map_world.geojson",
+      "format": {"property": "features"}
+    },
+    "transform": [
+      {
+        "lookup": "properties.ISO3",
+        "from": {
+          "key": "Economy Code",
+          "fields": ["Economy", "Year", "Population, total"],
+          "data": {
+            "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/Population%20(number).csv"
+          }
+        },
+        "as": ["pop_Economy", "pop_Year", "pop_Population"]
+      }
+    ],
+    "projection": {
+      "type": "naturalEarth1",
+      "scale": 150,
+      "translate": [350, 210]
+    },
+    "mark": {"type": "geoshape", "stroke": "white", "strokeWidth": 0.3},
+    "encoding": {
+      "color": {
+        "field": "pop_Population",
+        "type": "quantitative",
+        "legend": {
+          "title": "Population",
+          "format": ",.0f"
+        },
+        "scale": {
+          "type": "linear",
+          "scheme": "purpleblue",
+          "domain": [1000000, 50000000, 500000000, 2000000000, 7000000000]
+        }
+      },
+      "tooltip": [
+        {"field": "pop_Economy", "title": "Country"},
+        {"field": "pop_Year", "title": "Year"},
+
+        {"field": "pop_Population", "title": "Population", "format": ",.01f"}
+      ]
+    }
+  }
+  

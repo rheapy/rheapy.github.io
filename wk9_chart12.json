@@ -1,0 +1,47 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Bubble chart using a different dataset (CO2 Emissions, Income, and Population).",
+    "width": 600,
+    "height": 400,
+    "data": {
+      "url": "https://raw.githubusercontent.com/vega/vega-datasets/main/data/cars.json",
+      "format": {"type": "json"}
+    },
+    "transform": [
+      {
+        "aggregate": [
+          {"op": "mean", "field": "Miles_per_Gallon", "as": "avg_MPG"},
+          {"op": "sum", "field": "Weight_in_lbs", "as": "total_Weight"}
+        ],
+        "groupby": ["Origin"]
+      }
+    ],
+    "mark": {
+      "type": "circle",
+      "tooltip": true
+    },
+    "encoding": {
+      "x": {
+        "field": "avg_MPG",
+        "type": "quantitative",
+        "axis": {"title": "Average MPG"}
+      },
+      "y": {
+        "field": "total_Weight",
+        "type": "quantitative",
+        "axis": {"title": "Total Weight"}
+      },
+      "size": {
+        "field": "total_Weight",
+        "type": "quantitative",
+        "scale": {"range": [0, 2000]},
+        "legend": {"title": "Weight"}
+      },
+      "color": {
+        "field": "Origin",
+        "type": "nominal",
+        "legend": {"title": "Region"}
+      }
+    }
+  }
+  

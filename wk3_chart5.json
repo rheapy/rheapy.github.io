@@ -1,0 +1,71 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Productivity Levels",
+    "anchor": "start",
+    "subtitle": "Source: OECD",
+    "fontSize": 12,
+    "subtitleFontSize": 10,
+    "color": "#151df4",
+    "subtitleColor": "#000000"
+  },
+  "height": 350,
+  "width": 500,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "background": "#ffffff",
+  "view": {
+    "fill": "#ffffff",
+    "strokeOpacity": 0
+  },
+  "data": {
+    "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/OECD.SDD.TPS%2CDSD_PDB%40DF_PDB_LV%2C%2BFRA%2BDEU%2BGBR%2BUSA.A.GDPHRS..USD_PPP_H.V....csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "mark": {
+    "type": "bar", 
+    "size": 70
+  },
+  "encoding": {
+    "x": {
+      "field": "Reference area",
+      "type": "nominal",
+      "axis": {
+        "title": "Country",
+        "titleColor": "#122B39",
+        "labelAngle": 0,
+        "labelFontSize": 10
+      }
+    },
+    "y": {
+      "field": "OBS_VALUE",
+      "type": "quantitative",
+      "aggregate": "sum",
+      "axis": {
+        "title": "Output Per Worker",
+        "titleColor": "#122B39",
+        "grid": true
+      },
+      "scale": {
+        "domain": [0, 300]
+      }
+    },
+    "color": {
+      "field": "TIME_PERIOD",
+      "type": "temporal",
+      "timeUnit": "year",
+      "legend": {
+        "title": "Year",
+        "format": "%Y"
+      },
+      "scale": {
+        "domain": ["2021", "2022", "2023", "2024"],
+        "range": ["#1f77b4", "#ff69b4", "#9b59b6", "#ff7f0e"]
+      }
+    }
+  }
+}

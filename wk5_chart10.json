@@ -1,0 +1,144 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Anscombe's Quartet",
+  "data": {
+    "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/ons_combined_data.csv"
+  },
+  "transform": [{"filter": "toDate(datum.date) >= toDate('2015-01-01')"}],
+  "columns": 3,
+  "facet": {
+    "field": "series",
+    "type": "ordinal",
+    "sort": {"op": "min", "field": "date"},
+    "title": null
+  },
+  "spec": {
+    "width": 150,
+    "height": 120,
+    "encoding": {"x": {"field": "date", "type": "temporal"}},
+    "layer": [
+      {
+        "encoding": {
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "scale": {"type": "linear", "zero": false},
+            "title": null
+          },
+          "tooltip": [
+            {
+              "field": "date",
+              "type": "temporal",
+              "title": "Date",
+              "format": "%b %Y"
+            },
+            {
+              "field": "value",
+              "type": "quantitative",
+              "title": "Value",
+              "format": ".1f"
+            },
+            {"field": "series", "type": "nominal", "title": "Series"}
+          ]
+        },
+        "layer": [
+          {"mark": {"type": "line", "color": "#4269d0"}},
+          {
+            "transform": [{"filter": {"param": "hover", "empty": false}}],
+            "mark": {
+              "type": "point",
+              "filled": true,
+              "size": 60,
+              "color": "#4269d0"
+            }
+          }
+        ]
+      },
+      {
+        "mark": "rule",
+        "encoding": {
+          "opacity": {
+            "condition": {"value": 0.3, "param": "hover", "empty": false},
+            "value": 0
+          },
+          "tooltip": [
+            {
+              "field": "date",
+              "type": "temporal",
+              "format": "%b %Y",
+              "title": "Date"
+            },
+            {"field": "series", "type": "nominal", "title": "Series"},
+            {
+              "field": "value",
+              "type": "quantitative",
+              "format": ".1f",
+              "title": "Value"
+            }
+          ]
+        },
+        "params": [
+          {
+            "name": "hover",
+            "select": {
+              "type": "point",
+              "fields": ["date", "series"],
+              "nearest": true,
+              "on": "pointerover",
+              "clear": "pointerout"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "resolve": {"scale": {"y": "independent"}},
+  "title": {
+    "text": "The UK Consumer Price Inflation at a glance",
+    "subtitle": ["Data: ONS", "CPI 2015=100"]
+  },
+  "config": {
+    "font": "Montserrat, sans-serif",
+    "view": {"stroke": "transparent"},
+    "background": "#f7f7f7",
+    "range": {"category": {"scheme": "observable10"}},
+    "axis": {
+      "labelColor": "#676A86",
+      "labelFontSize": 11,
+      "labelFont": "Montserrat, sans-serif",
+      "labelOpacity": 0.7,
+      "tickColor": "#676A86",
+      "tickOpacity": 0.5,
+      "domainColor": "#676A86",
+      "domainOpacity": 0.5,
+      "gridColor": "#676A86",
+      "gridDash": [2, 2],
+      "gridOpacity": 0.5,
+      "title": null,
+      "titleColor": "#676A86",
+      "titleOpacity": 0.8,
+      "tickSize": 4
+    },
+    "axisXTemporal": {"grid": false},
+    "axisYQuantitative": {
+      "gridColor": "#676A86",
+      "gridDash": [1, 5],
+      "gridOpacity": 0.5,
+      "ticks": false,
+      "labelPadding": 5,
+      "tickCount": 4,
+      "titleAngle": 0,
+      "titleAlign": "left",
+      "titleBaseline": "bottom",
+      "titleX": 0,
+      "titleY": -5
+    },
+    "title": {
+      "font": "Montserrat, sans-serif",
+      "fontSize": 16,
+      "color": "#1a1a1a",
+      "subtitleFontSize": 14,
+      "subtitleColor": "#676A86"
+    }
+  }
+}
