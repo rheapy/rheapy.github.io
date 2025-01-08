@@ -1,0 +1,26 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Map of Indian states using GeoJSON",
+    "width": 600,
+    "height": 600,
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/India_states.json",
+          "format": {"type": "json", "property": "features"}
+        },
+        "projection": {"type": "mercator"},
+        "mark": {
+          "type": "geoshape",
+          "fill": "#eaeaea",
+          "stroke": "#ffc286",
+          "strokeWidth": 1
+        },
+        "encoding": {
+          "tooltip": [
+            {"field": "properties.name", "type": "nominal", "title": "State"}
+          ]
+        }
+      }
+    ]
+  }

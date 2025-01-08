@@ -1,0 +1,55 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "Map of Indian states showing marks and position distribution",
+    "width": 600,
+    "height": 600,
+    "title": {
+      "text": "Population of Indian States",
+      "subtitle": ["Source: Census India"],
+      "fontSize": 15,
+      "subtitleFontSize": 11,
+      "subtitleFontWeight": "lighter",
+      "anchor": "middle"
+    },
+    "layer": [
+      {
+        "data": {
+          "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/India_states.json",
+          "format": {"type": "json", "property": "features"}
+        },
+        "transform": [
+          {
+            "lookup": "properties.id",
+            "from": {
+              "data": {
+                "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/india_population.csv",
+                "format": {"type": "csv"}
+              },
+              "key": "id",
+              "fields": ["states","Population"]
+            }
+          }
+        ],
+        "projection": {"type": "mercator", "center": [82, 23], "scale": 1000},
+        "mark": {"type": "geoshape", "stroke": "#fff", "strokeWidth": 1},
+        "encoding": {
+          "color": {
+            "field":"Population",
+            "type": "quantitative",
+            "scale": {"scheme": "oranges", "domain": [0, 100000000]},
+            "legend": {"title": "Population", "format": ",.0f"}
+          },
+          "tooltip": [
+            {"field": "properties.name", "type": "nominal", "title": "State"},
+            {
+              "field": "Population",
+              "type": "quantitative",
+              "title": "Population",
+              "format": ",.0f"
+            }
+          ]
+        }
+      }
+    ],
+    "config": {"view": {"stroke": null}}
+  }
