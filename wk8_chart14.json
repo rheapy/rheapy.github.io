@@ -1,42 +1,49 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {
-      "url": "rhttps://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/rice_price.csv",
-      "format": {"type": "csv"}
+    "description": "Rice Prices across the UK",
+    "title": {
+      "text": "Monthly Rice Price in the UK Over Time",
+      "fontSize": 12,
+      "anchor": "start"
     },
-    "transform": [
-      {
-        "calculate": "monthFormat(datum.date2, '%m/%d/%Y', '%B')",
-        "as": "month"
-      }
-    ],
-    "mark": "circle",
+    "width": 400,
+    "height": 200,
+    "data": {
+      "url": "https://raw.githubusercontent.com/rheapy/rheapy.github.io/refs/heads/main/rice_price.csv"
+    },
+    "mark": {
+      "type": "point",
+      "tooltip": true,
+      "color": "#7c0501"
+    },
     "encoding": {
       "x": {
-        "field": "month",
-        "type": "ordinal",
-        "sort": [
-          "January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December"
-        ],
-        "title": "Month",
-        "axis": {
-          "labelAngle": -45
-        }
+        "field": "date2",
+        "type": "temporal",
+        "title": null,
+        "axis": {"labelAngle": 45, "format": "%Y-%m"}
       },
       "y": {
-        "aggregate": "mean",
         "field": "price",
         "type": "quantitative",
-        "title": "Average Price"
+        "title": " Price (£)",
+        "axis": {"format": ".2f"}
       },
       "tooltip": [
-        {"field": "month", "type": "ordinal", "title": "Month"},
-        {"field": "price", "aggregate": "mean", "type": "quantitative", "title": "Average Price"}
+        {
+          "field": "date2",
+          "type": "temporal",
+          "title": "Month-Year",
+          "format": "%m-%Y"
+        },
+        {
+          "field": "price",
+          "type": "quantitative",
+          "title": "Price (£)",
+          "format": ".2f"
+        }
       ]
     },
-    "title": "Rice Prices Aggregated by Month",
-    "width": 800,
-    "height": 400
+    "config": {"axis": {"grid": true}, "view": {"stroke": "transparent"}}
   }
   
